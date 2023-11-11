@@ -10,7 +10,8 @@ redisConnection.on("error", (error) => {
   console.error(`Error: ${error}`);
 });
 
-// Connect to the Redis server
+// Connect to the Redis serverr
+
 (async () => {
   await redisConnection.connect();
 })();
