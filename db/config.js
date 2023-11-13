@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
-const URL =
-  "mongodb+srv://vicky:hKTqIk98GJe9rfxE@cluster0.o1i4r.mongodb.net/?retryWrites=true&w=majority";
+ const URL = "DB URL "
 
 const connectionParams = {
   useNewUrlParser: true,
@@ -9,7 +8,8 @@ const connectionParams = {
 };
 const dbConnection = () => {
   mongoose
-    .connect(URL, connectionParams)
+    .connect( URL
+      , connectionParams)
     .then(() => {
       console.log("Connected to DB successfully !");
     })
@@ -19,3 +19,5 @@ const dbConnection = () => {
 };
 
 module.exports = dbConnection;
+
+
