@@ -7,7 +7,7 @@ const NoteSchema = require("./model/index");
 const { setData, getData } = require("./redis/Session");
 const app = express();
 
-console.log("get",)
+console.log("get");
 
 dbConnection();
 
@@ -51,7 +51,6 @@ app.post("/api/notes", async (req, res, next) => {
   }
 });
 
-
 /*                            ***get notes***
 
 method : Get
@@ -63,28 +62,23 @@ use: get notes
 */
 app.get("/api/notes/:id", async (req, res) => {
   const { id } = req.params;
-  // console.log("id", id);
 
   try {
     const redies = await getData(id);
-
-
     if (!redies) {
       const note = await NoteSchema.findOne({ _id: id });
-      console.log("not found in redis")
+      console.log("not found in redis");
       await setData(note._id.toString(), note);
       if (!note) {
         return res.status(404).json({ message: "Note not found" });
       } else {
-        console.log("found in DB")
+        console.log("found in DB");
         const redies = await getData(id);
         return res.status(200).json(redies);
       }
     }
 
-
     return res.status(200).json(redies);
-
   } catch (error) {
     return res.status(500).json({ message: "An error occurred" });
   }

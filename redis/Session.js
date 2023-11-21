@@ -1,10 +1,8 @@
 const redisConnection = require("./config");
 
 const setData = async (key, data) => {
-  redisConnection.set(key, JSON.stringify(data), "EX", 2);
+  redisConnection.set(key, JSON.stringify(data), { EX: 60 });
 };
-
-
 
 const getData = async (key) => {
   const data = await redisConnection.get(key);

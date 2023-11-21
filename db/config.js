@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
- const URL = "DB URL "
+const URL = "url";
 
 const connectionParams = {
   useNewUrlParser: true,
@@ -8,8 +8,7 @@ const connectionParams = {
 };
 const dbConnection = () => {
   mongoose
-    .connect( URL
-      , connectionParams)
+    .connect(URL, connectionParams)
     .then(() => {
       console.log("Connected to DB successfully !");
     })
@@ -19,5 +18,3 @@ const dbConnection = () => {
 };
 
 module.exports = dbConnection;
-
-
